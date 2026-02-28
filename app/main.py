@@ -1,11 +1,12 @@
 # app/main.py
+
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-
 from fastapi import FastAPI
 from app.schemas import SalaryRequest
 from app.model import predict_salary
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -16,16 +17,21 @@ app = FastAPI(
     version="1.0.0"
 )
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))   # app/
+PROJECT_ROOT = os.path.dirname(BASE_DIR)                # project/
+
+STATIC_DIR = os.path.join(PROJECT_ROOT, "static")
+
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
 
 @app.get("/")
 def serve_frontend():
-    return FileResponse("static/index.html")
+    return FileResponse(os.path.join(STATIC_DIR, "index.html"))
+
 
 @app.post("/predict")
 def predict(request: SalaryRequest):
+    logger.info(f"Prediction request: {request.dict()}")
     prediction = predict_salary(request.dict())
-    return {
-        "predicted_salary_usd": round(prediction, 2)
-    }
-
+    return {"predicted_salary_usd": round(prediction, 2)}

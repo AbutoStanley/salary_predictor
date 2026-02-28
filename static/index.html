@@ -1,48 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Salary Predictor</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Tech Salary Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
+
+<div class="container">
+    <div class="card">
         <h1>Tech Salary Predictor</h1>
         <p class="subtitle">Estimate salary based on experience and company attributes</p>
 
         <form id="salaryForm">
-            <select id="experience_level" required>
-                <option value="">Experience Level</option>
-                <option value="EN">Entry</option>
-                <option value="MI">Mid</option>
-                <option value="SE">Senior</option>
-                <option value="EX">Executive</option>
-            </select>
+            
+            <div class="form-group">
+                <label for="experience_level">Experience Level</label>
+                <select id="experience_level" name="experience_level">
+                    <option value="" disabled selected>Select experience level</option>
+                    <option value="EN">Entry</option>
+                    <option value="MI">Mid</option>
+                    <option value="SE">Senior</option>
+                    <option value="EX">Executive</option>
+                </select>
+            </div>
 
-            <select id="employment_type" required>
-                <option value="">Employment Type</option>
-                <option value="FT">Full Time</option>
-                <option value="PT">Part Time</option>
-                <option value="CT">Contract</option>
-                <option value="FL">Freelance</option>
-            </select>
+            <div class="form-group">
+                <label for="employment_type">Employment Type</label>
+                <select id="employment_type" name="employment_type">
+                    <option value="" disabled selected>Select Employment Type</option>
+                    <option value="FT">Full Time</option>
+                    <option value="PT">Part Time</option>
+                    <option value="CT">Contract</option>
+                    <option value="FL">Freelance</option>
+                </select>
+            </div>
 
-            <select id="company_size" required>
-                <option value="">Company Size</option>
-                <option value="S">Small</option>
-                <option value="M">Medium</option>
-                <option value="L">Large</option>
-            </select>
+            <div class="form-group">
+                <label for="company_size">Company Size</label>
+                <select id="company_size" name="company_size">
+                    <option value="" disabled selected>Select company size</option>
+                    <option value="S">Small</option>
+                    <option value="M">Medium</option>
+                    <option value="L">Large</option>
+                </select>
+            </div>
 
-            <input type="number" id="work_year" placeholder="Work Year (e.g. 2023)" required />
-            <input type="number" id="remote_ratio" placeholder="Remote Ratio (0-100)" required />
-            <input type="text" id="residence_grouped" placeholder="Residence (US, GB, IN, Other)" required />
+            <div class="form-group">
+                <label>Work Year</label>
+                <input type="number" id="work_year" value="2023">
+            </div>
 
-            <button type="submit">Predict Salary</button>
+            <div class="form-group">
+                <label>Remote Ratio (0–100)</label>
+                <input type="number" id="remote_ratio" value="50">
+            </div>
+
+            <div class="form-group">
+                <label for="residence_grouped">Residence</label>
+                <select id="residence_grouped" name="residence_grouped">
+                    <option value="" disabled selected>Select location</option>
+                    <option value="US">United States</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="IN">India</option>
+                    <option value="CA">Canada</option>
+                    <option value="DE">Germany</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <button type="button" onclick="predict()">Predict Salary</button>
+
         </form>
 
-        <div id="result"></div>
+        <div class="result" id="result"></div>
     </div>
+</div>
 
-    <script src="/static/script.js"></script>
+<script src="/static/script.js"></script>
 </body>
 </html>

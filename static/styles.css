@@ -1,49 +1,73 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.1);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(20px);
     padding: 40px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    width: 400px;
-    text-align: center;
+    border-radius: 20px;
+    width: 420px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 h1 {
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
+    text-align: center;
 }
 
 .subtitle {
-    font-size: 14px;
-    margin-bottom: 20px;
+    text-align: center;
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 13px;
+    margin-bottom: 6px;
     opacity: 0.8;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 14px;
 }
 
-input, select {
-    padding: 10px;
-    border-radius: 8px;
+select {
+    padding: 12px;
+    border-radius: 10px;
     border: none;
+    background-color: #374151;
+    color: white;
+    font-size: 14px;
 }
 
 button {
-    padding: 12px;
+    margin-top: 10px;
+    padding: 14px;
+    border-radius: 12px;
     border: none;
-    border-radius: 8px;
-    background-color: #00c6ff;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -51,11 +75,13 @@ button {
 }
 
 button:hover {
-    background-color: #0072ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(99,102,241,0.4);
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+.result {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
 }
